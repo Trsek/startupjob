@@ -90,9 +90,9 @@ namespace startupjob.Controllers
                 catch { }
             }
 
-            result &= appliciants.Save();
-            result &= jobresponse.Save();
-            result &= doc.Save();
+            result &= await appliciants.Save();
+            result &= await jobresponse.Save();
+            result &= await doc.Save();
 
             return result
                 ? Ok()

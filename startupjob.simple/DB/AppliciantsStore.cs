@@ -1,12 +1,11 @@
 ﻿using Microsoft.Data.Sqlite;
-using System;
 using System.Collections.Generic;
 
 namespace startupjob.DB
 {
     public class AppliciantsStore : _CommonDB
     {
-        public Dictionary<string, SqliteType> columns = new Dictionary<string, SqliteType>()
+        public new Dictionary<string, SqliteType> columns = new Dictionary<string, SqliteType>()
         {
             { "FirstName", SqliteType.Text },
             { "LastName", SqliteType.Text },

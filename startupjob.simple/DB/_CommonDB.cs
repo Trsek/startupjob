@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace startupjob.DB
 {
@@ -11,7 +12,7 @@ namespace startupjob.DB
         public Dictionary<string, SqliteType> columns = new Dictionary<string, SqliteType>();
         public Dictionary<string, object> values = new Dictionary<string, object>();
 
-        public string ToString()
+        public new string ToString()
         {
             string line = string.Empty;
 
@@ -51,7 +52,7 @@ namespace startupjob.DB
             return true;
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
             List<string> sql_column = new List<string>();
             List<string> sql_value = new List<string>();
@@ -94,7 +95,7 @@ namespace startupjob.DB
 
                 var command = connection.CreateCommand();
 
-                command.CommandText = @"SELECT * FROM " + table;
+                command.CommandText = @"SELECT * FROM " + table + " WHERE id = $id";
 
                 command.Parameters.AddWithValue("$id", id);
 

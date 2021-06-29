@@ -5,7 +5,7 @@ namespace startupjob.DB
 {
     public class DocumentsStore : _CommonDB
     {
-        public Dictionary<string, SqliteType> columns = new Dictionary<string, SqliteType>()
+        public new Dictionary<string, SqliteType> columns = new Dictionary<string, SqliteType>()
         {
             { "Name", SqliteType.Text },
             { "DocumentType", SqliteType.Integer },

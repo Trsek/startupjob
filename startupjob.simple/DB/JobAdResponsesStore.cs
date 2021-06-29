@@ -5,7 +5,7 @@ namespace startupjob.DB
 {
     public class JobAdResponsesStore : _CommonDB
     {
-        public Dictionary<string, SqliteType> columns = new Dictionary<string, SqliteType>()
+        public new Dictionary<string, SqliteType> columns = new Dictionary<string, SqliteType>()
         {
             { "FirstName", SqliteType.Text },
             { "LastName", SqliteType.Text },
