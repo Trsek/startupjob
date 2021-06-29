@@ -1,10 +1,20 @@
 /.vs
-/startupjob.simple/bin
-/startupjob.simple/obj
 /startupjob.simple/packages
 /startupjob.simple/*.user
-/startupjob.mvc/bin
-/startupjob.mvc/obj
 /startupjob.mvc/packages
 /startupjob.mvc/*.user
-azure-csharp-webhook-sample
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+msbuild.log
+msbuild.err
+msbuild.wrn
