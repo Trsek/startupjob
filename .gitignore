@@ -1,0 +1,10 @@
+/.vs
+/startupjob.simple/bin
+/startupjob.simple/obj
+/startupjob.simple/packages
+/startupjob.simple/*.user
+/startupjob.mvc/bin
+/startupjob.mvc/obj
+/startupjob.mvc/packages
+/startupjob.mvc/*.user
+azure-csharp-webhook-sample

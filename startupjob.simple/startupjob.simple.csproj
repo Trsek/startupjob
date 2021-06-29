@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon>startupjob.ico</ApplicationIcon>
+    <Authors>Zdeno Sekerák, www.trsek.com</Authors>
+    <Product>EMPY</Product>
+    <Company>Sprinx, s.r.o.</Company>
+    <PackageProjectUrl>https://candidate.sprinx.cz</PackageProjectUrl>
+    <RepositoryUrl>https://candidate.sprinx.cz/sujwh/</RepositoryUrl>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.16" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EMPY.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
