@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -52,11 +53,11 @@ namespace startupjob.DB
             return true;
         }
 
-        public async Task<bool> Save()
+        public async Task<Int64> Save()
         {
             List<string> sql_column = new List<string>();
             List<string> sql_value = new List<string>();
-            int result = 0;
+            Int64 result = -1;
 
             if (values.Count > 0)
             {
@@ -80,10 +81,17 @@ namespace startupjob.DB
                         command.Parameters.AddWithValue("$" + value.Key, value.Value);
 
                     result = command.ExecuteNonQuery();
+
+                    // get id
+                    if (result != -1)
+                    {
+                        command.CommandText = @"select last_insert_rowid()";    //TODO multithread?
+                        result = (Int64)command.ExecuteScalar();
+                    }
                 }
             }
-            
-            return (result == 1);
+
+            return result;
         }
 
         public void Load(int id)

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using startupjob.DB;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -75,7 +76,6 @@ namespace startupjob.Controllers
             AppliciantsStore appliciants = new AppliciantsStore();
             JobAdResponsesStore jobresponse = new JobAdResponsesStore();
             DocumentsStore doc = new DocumentsStore();
-            bool result = true;
 
             JObject json = JObject.Parse(payload.ToString());
 
@@ -90,11 +90,15 @@ namespace startupjob.Controllers
                 catch { }
             }
 
-            result &= await appliciants.Save();
-            result &= await jobresponse.Save();
-            result &= await doc.Save();
+            Int64 appliciants_id = await appliciants.Save();
+            Int64 jobresponse_id = await jobresponse.Save();
 
-            return result
+            doc.Update("Applicant_Id", appliciants_id.ToString());
+            doc.Update("JobAdResponse_Id", jobresponse_id.ToString());
+
+            Int64 doc_id = await doc.Save();
+
+            return ((appliciants_id != -1) && (jobresponse_id != -1) && (doc_id != -1))
                 ? Ok()
                 : ValidationProblem();
         }
